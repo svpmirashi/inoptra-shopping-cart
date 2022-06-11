@@ -13,11 +13,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "ProductItem")
 public class ProductItem implements Serializable {
@@ -28,12 +30,16 @@ public class ProductItem implements Serializable {
     @GeneratedValue
     private long id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "brand")
     private String brand;
 
+    @Column(name = "color")
     private String color;
 
     @Column(name = "base_price")
