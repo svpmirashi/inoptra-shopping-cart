@@ -16,6 +16,10 @@ Run application jar from 'target\' directory in the project root ('inoptra-shopp
 
 >_java -jar inoptra-shopping-cart-0.0.1-SNAPSHOT.jar_
 
+</br>
+
+**API Documentation:**
+
 
 <table>
     <thead>
