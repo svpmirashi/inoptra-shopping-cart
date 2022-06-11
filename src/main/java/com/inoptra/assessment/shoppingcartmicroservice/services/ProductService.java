@@ -1,14 +1,9 @@
 package com.inoptra.assessment.shoppingcartmicroservice.services;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
-
-import javax.persistence.JoinColumn;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

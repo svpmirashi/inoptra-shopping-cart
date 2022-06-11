@@ -2,7 +2,6 @@ package com.inoptra.assessment.shoppingcartmicroservice.controllers;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inoptra.assessment.shoppingcartmicroservice.exceptions.InvalidProductItemIdException;
-import com.inoptra.assessment.shoppingcartmicroservice.exceptions.ProductItemNotFoundException;
 import com.inoptra.assessment.shoppingcartmicroservice.models.ProductItem;
 import com.inoptra.assessment.shoppingcartmicroservice.services.ProductService;
-import com.sun.org.apache.bcel.internal.generic.SWITCH;
 
 @RestController
 @RequestMapping(path = "/products")
