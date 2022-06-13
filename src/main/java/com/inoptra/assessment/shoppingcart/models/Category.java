@@ -1,4 +1,4 @@
-package com.inoptra.assessment.shoppingcartmicroservice.models;
+package com.inoptra.assessment.shoppingcart.models;
 
 public enum Category {
     //private String category;

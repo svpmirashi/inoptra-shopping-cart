@@ -1,11 +1,8 @@
-package com.inoptra.assessment.shoppingcartmicroservice;
+package com.inoptra.assessment.shoppingcart;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,9 +12,8 @@ import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.inoptra.assessment.shoppingcartmicroservice.models.ProductItem;
-import com.inoptra.assessment.shoppingcartmicroservice.repositories.ProductRepository;
-import com.inoptra.assessment.shoppingcartmicroservice.services.ProductService;
+import com.inoptra.assessment.shoppingcart.models.ProductItem;
+import com.inoptra.assessment.shoppingcart.repositories.ProductRepository;
 
 @SpringBootTest
 class ShoppingCartMicroserviceApplicationTests {
@@ -26,8 +22,8 @@ class ShoppingCartMicroserviceApplicationTests {
     @Mock
     private ProductRepository productRepository;
 
-    @Autowired
-    private ProductService productService;
+    //@Autowired
+    //private ProductService productService;
 
     //private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 

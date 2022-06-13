@@ -1,4 +1,4 @@
-package com.inoptra.assessment.shoppingcartmicroservice;
+package com.inoptra.assessment.shoppingcart;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

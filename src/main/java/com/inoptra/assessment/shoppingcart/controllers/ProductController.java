@@ -1,4 +1,4 @@
-package com.inoptra.assessment.shoppingcartmicroservice.controllers;
+package com.inoptra.assessment.shoppingcart.controllers;
 
 import java.util.List;
 import java.util.Objects;
@@ -10,16 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inoptra.assessment.shoppingcartmicroservice.exceptions.InvalidProductItemIdException;
-import com.inoptra.assessment.shoppingcartmicroservice.models.ProductItem;
-import com.inoptra.assessment.shoppingcartmicroservice.services.ProductService;
+import com.inoptra.assessment.shoppingcart.exceptions.InvalidProductItemIdException;
+import com.inoptra.assessment.shoppingcart.models.ProductItem;
+import com.inoptra.assessment.shoppingcart.services.ProductService;
 
 @RestController
 @RequestMapping(path = "/products")
 public class ProductController {
-    @Autowired
+//	@Autowired
     private ProductService productService;
-
+    
+    public ProductController(@Autowired ProductService productService) {
+    	this.productService = productService;
+    }
 
     @RequestMapping(path = "/all")
     public List<ProductItem> getAProductItemsByName(
