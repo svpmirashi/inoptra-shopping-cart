@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: "jdbc:derby:memory:local;create=true"  
+    username: derbyuser
+    password: password
+
+
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+    database-platform: org.hibernate.dialect.DerbyTenSevenDialect
+    # properties.hibernate.dialect: org.hibernate.dialect.DerbyTenSevenDialect

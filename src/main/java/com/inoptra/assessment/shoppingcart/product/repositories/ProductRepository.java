@@ -1,11 +1,11 @@
-package com.inoptra.assessment.shoppingcart.repositories;
+package com.inoptra.assessment.shoppingcart.product.repositories;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.inoptra.assessment.shoppingcart.models.ProductItem;
+import com.inoptra.assessment.shoppingcart.product.models.ProductItem;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductItem, Long> {

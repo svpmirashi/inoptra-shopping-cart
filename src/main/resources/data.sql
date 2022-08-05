@@ -1,8 +1,13 @@
-INSERT INTO PRODUCT_ITEM (id, name, title, brand, color, base_price, vendor_name, mfg_date, expiry_date, created_by, created_date, modified_by, modified_date)
-VALUES (1, 'iPhone 13 Pro Max', 'iPhone 13 Pro Max', 'iPhone', 'Black', 139900, 'ABC Electronics', '2022-05-01', '2022-05-15', 'testUser1', '2022-08-06', 'testUser1', '2022-08-06');
-INSERT INTO PRODUCT_ITEM (id, name, title, brand, color, base_price, vendor_name, mfg_date, expiry_date, created_by, created_date, modified_by, modified_date)
-VALUES (2, 'iPhone 13 Pro Max', 'iPhone 13 Pro Max', 'iPhone', 'Baby Pink', 139900, 'ABC Electronics', '2022-05-01', '2022-05-15', 'testUser1', '2022-08-06', 'testUser1', '2022-08-06');
-INSERT INTO PRODUCT_ITEM (id, name, title, brand, color, base_price, vendor_name, mfg_date, expiry_date, created_by, created_date, modified_by, modified_date)
-VALUES (3, 'iPhone 13', 'iPhone 13', 'iPhone', 'Blue', 80900, 'XZY Electronics', '2022-04-01', '2022-04-15', 'testUser2', '2022-08-06', 'testUser2', '2022-08-06');
-INSERT INTO PRODUCT_ITEM (id, name, title, brand, color, base_price, vendor_name, mfg_date, expiry_date, created_by, created_date, modified_by, modified_date)
-VALUES (4, 'iPhone 13', 'iPhone 13', 'iPhone', 'Red', 81900, 'XZY Electronics', '2022-04-01', '2022-04-15', 'testUser2', '2022-08-06', 'testUser2', '2022-08-06');
+INSERT INTO VENDOR (vendor_id, vendor_name, vendor_address, created_by, created_date, modified_by, modified_date)
+VALUES (1, 'ABC Electronics', 'Address 1',  'testUser1', '2021-08-16', 'testUser1', '2021-08-16');
+INSERT INTO VENDOR (vendor_id, vendor_name, vendor_address, created_by, created_date, modified_by, modified_date)
+VALUES (2, 'XZY Electronics', 'Address 2',  'testUser1', '2021-08-16', 'testUser1', '2021-08-16');
+
+INSERT INTO PRODUCT_ITEM (product_item_id, name, title, brand, color, base_price, vendor_id, mfg_date, expiry_date, created_by, created_date, modified_by, modified_date)
+VALUES (100, 'iPhone 13 Pro Max', 'iPhone 13 Pro Max', 'iPhone', 'Black', 139900, 1, '2022-05-01', '2022-05-15', 'testUser1', '2022-08-06', 'testUser1', '2022-08-06');
+INSERT INTO PRODUCT_ITEM (product_item_id, name, title, brand, color, base_price, vendor_id, mfg_date, expiry_date, created_by, created_date, modified_by, modified_date)
+VALUES (101, 'iPhone 13 Pro Max', 'iPhone 13 Pro Max', 'iPhone', 'Baby Pink', 139900, 1, '2022-05-01', '2022-05-15', 'testUser1', '2022-08-06', 'testUser1', '2022-08-06');
+INSERT INTO PRODUCT_ITEM (product_item_id, name, title, brand, color, base_price, vendor_id, mfg_date, expiry_date, created_by, created_date, modified_by, modified_date)
+VALUES (102, 'iPhone 13', 'iPhone 13', 'iPhone', 'Blue', 80900, 2, '2022-04-01', '2022-04-15', 'testUser2', '2022-08-06', 'testUser2', '2022-08-06');
+INSERT INTO PRODUCT_ITEM (product_item_id, name, title, brand, color, base_price, vendor_id, mfg_date, expiry_date, created_by, created_date, modified_by, modified_date)
+VALUES (103, 'iPhone 13', 'iPhone 13', 'iPhone', 'Red', 81900, 2, '2022-04-01', '2022-04-15', 'testUser2', '2022-08-06', 'testUser2', '2022-08-06');

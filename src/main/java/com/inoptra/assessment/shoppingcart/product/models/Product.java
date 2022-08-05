@@ -1,4 +1,4 @@
-package com.inoptra.assessment.shoppingcart.models;
+package com.inoptra.assessment.shoppingcart.product.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -9,22 +9,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 //@Entity
 //@Table(name = "tblAbstractProduct", schema = "ProductMs")
-public abstract class AbstractProduct implements Serializable {
+public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue
+    //@Id
+    //@GeneratedValue
     private long id;
 
     private String name;

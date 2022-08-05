@@ -1,4 +1,4 @@
-package com.inoptra.assessment.shoppingcart.exceptions;
+package com.inoptra.assessment.shoppingcart.product.exceptions;
 
 import java.io.Serializable;
 

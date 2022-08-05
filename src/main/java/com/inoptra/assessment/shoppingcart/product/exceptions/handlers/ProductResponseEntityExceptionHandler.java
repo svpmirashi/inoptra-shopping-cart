@@ -1,4 +1,4 @@
-package com.inoptra.assessment.shoppingcart.exceptions.handlers;
+package com.inoptra.assessment.shoppingcart.product.exceptions.handlers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
-import com.inoptra.assessment.shoppingcart.exceptions.InvalidProductItemIdException;
-import com.inoptra.assessment.shoppingcart.exceptions.ProductItemNotFoundException;
+import com.inoptra.assessment.shoppingcart.product.exceptions.InvalidProductItemIdException;
+import com.inoptra.assessment.shoppingcart.product.exceptions.ProductItemNotFoundException;
 
 @RestControllerAdvice
 public class ProductResponseEntityExceptionHandler {

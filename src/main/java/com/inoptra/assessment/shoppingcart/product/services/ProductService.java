@@ -1,4 +1,4 @@
-package com.inoptra.assessment.shoppingcart.services;
+package com.inoptra.assessment.shoppingcart.product.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.inoptra.assessment.shoppingcart.models.ProductItem;
-import com.inoptra.assessment.shoppingcart.repositories.ProductRepository;
+import com.inoptra.assessment.shoppingcart.product.models.ProductItem;
+import com.inoptra.assessment.shoppingcart.product.repositories.ProductRepository;
 
 @Service
 public class ProductService {
@@ -44,7 +44,7 @@ public class ProductService {
 
     public ProductItem saveOrUpdate(ProductItem productItem){
         if(logger.isLoggable(Level.ALL)) {
-            logger.fine("ProductService::saveOrUpdate ==> productItem = " + productItem.toString());
+            logger.info("ProductService::saveOrUpdate ==> productItem = " + productItem.toString());
         }
         return productRepository.save(productItem);
     }

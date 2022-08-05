@@ -12,8 +12,8 @@ import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.inoptra.assessment.shoppingcart.models.ProductItem;
-import com.inoptra.assessment.shoppingcart.repositories.ProductRepository;
+import com.inoptra.assessment.shoppingcart.product.models.ProductItem;
+import com.inoptra.assessment.shoppingcart.product.repositories.ProductRepository;
 
 @SpringBootTest
 class ShoppingCartMicroserviceApplicationTests {
