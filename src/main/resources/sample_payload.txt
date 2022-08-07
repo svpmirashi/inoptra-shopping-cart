@@ -1,0 +1,22 @@
+-------------------------------------------------
+Add ProductItem: 
+
+POST /products/add 
+
+Note that Vendor is having OneToMany mapping with ProductItem
+Payload:
+{
+    "name": "ABC",
+    "title": "ABC",
+    "brand": "ABC ABC",
+    "color": "",
+    "basePrice": 2300.0,
+    "vendor": {"id" : 2},
+    "mfgDate": "2022-04-01",
+    "expiryDate": "2022-04-15",
+    "createdBy": "testUser2",
+    "createdDate": "2022-08-06",
+    "modifiedBy": "testUser2",
+    "modifiedDate": "2022-08-06"
+}
+-------------------------------------------------
