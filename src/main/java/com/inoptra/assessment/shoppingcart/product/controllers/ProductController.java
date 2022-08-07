@@ -24,16 +24,22 @@ import com.inoptra.assessment.shoppingcart.product.exceptions.ProductItemNotFoun
 import com.inoptra.assessment.shoppingcart.product.models.entities.ProductItem;
 import com.inoptra.assessment.shoppingcart.product.services.ProductService;
 
+/**
+* @Author: Shrikrishna Prabhumirashi
+* @Description:
+* ProductController provides different REST API Endpoints for products
+**/
+
 @RestController
 @RequestMapping(path = "/products")
 public class ProductController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
-
 	
    @Autowired
     private ProductService productService;
 
+   
     @GetMapping(value = { "/", "" })
     public ResponseEntity<List<ProductItem>> getProductItemsAllOrByKeyword(
                                         @RequestParam(name = "keyword", required = false) String keyword
@@ -52,6 +58,8 @@ public class ProductController {
         return new ResponseEntity<> (result, HttpStatus.FOUND);
 
     }
+    
+    
     @GetMapping(path = {"/{id}", "/{id}/", "/product/{id}", "/product/{id}/"})
     public ResponseEntity<ProductItem> getProductItemsById(@PathVariable(name = "id", required = true) Long id){
         if(Objects.isNull(id) || id <= 0) throw new InvalidProductItemIdException();
@@ -64,6 +72,7 @@ public class ProductController {
         return new ResponseEntity<>(item, null, HttpStatus.FOUND) ;
     }
     
+    
     @PostMapping(path = { "/add", "/add/" })
     public ResponseEntity<ProductItem> addProductItem(@RequestBody ProductItem productItem){
     	
@@ -73,6 +82,7 @@ public class ProductController {
     	return  new ResponseEntity<>(productService.saveOrUpdate(productItem), HttpStatus.CREATED);
     }
     
+    
     @PutMapping(path =  {"/{id}", "/{id}/", "/product/{id}", "/product/{id}/"})
     public ResponseEntity<ProductItem> updateProductItem(@RequestBody ProductItem productItem){
     	
@@ -81,4 +91,5 @@ public class ProductController {
     	
     	return  new ResponseEntity<>(productService.saveOrUpdate(productItem), HttpStatus.NO_CONTENT);
     }
+    
 }

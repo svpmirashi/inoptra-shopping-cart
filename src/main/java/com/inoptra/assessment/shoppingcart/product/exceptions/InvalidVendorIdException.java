@@ -2,10 +2,29 @@ package com.inoptra.assessment.shoppingcart.product.exceptions;
 
 import java.io.Serializable;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+/**
+* @Author: Shrikrishna Prabhumirashi
+* @Description:
+* Custom Exception to be thrown when Vendor ID is invalid
+**/
 
-@NoArgsConstructor
 public class InvalidVendorIdException extends RuntimeException implements Serializable{
+
 	private static final long serialVersionUID = 1L;
+	
+	
+	public InvalidVendorIdException(){
+		super("Invalid Vendor ID");
+	}
+	
+	
+	public InvalidVendorIdException(String message) {
+		super(message);
+	}
+	
+	
+	public InvalidVendorIdException(String message, Throwable ex) {
+		super(message, ex.getCause());
+	}
+	
 }

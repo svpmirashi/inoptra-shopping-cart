@@ -9,6 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import com.inoptra.assessment.shoppingcart.product.models.entities.ProductItem;
 
+/**
+* @Author: Shrikrishna Prabhumirashi
+* @Description:
+* ProductRepository - Support for Pagination and acts as a persistence layer for ProductItem object
+**/
+
 @Repository
 public interface ProductRepository extends JpaRepository<ProductItem, Long> {
     List<ProductItem> findByTitle(String title);

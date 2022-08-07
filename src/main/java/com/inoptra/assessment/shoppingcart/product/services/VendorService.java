@@ -9,6 +9,12 @@ import org.springframework.stereotype.Service;
 import com.inoptra.assessment.shoppingcart.product.models.entities.Vendor;
 import com.inoptra.assessment.shoppingcart.product.repositories.VendorRepository;
 
+/**
+* @Author: Shrikrishna Prabhumirashi
+* @Description:
+* VendorService - Service layer for Vendor object
+**/
+
 @Service
 public class VendorService {
 
@@ -19,11 +25,14 @@ public class VendorService {
 		return vendorRepository.findAll();
 	}
 	
+	
 	public Optional<Vendor> getVendor(Long vid){
 		return vendorRepository.findById(vid);
 	}
 	
+	
 	public Vendor saveOrUpdate(Vendor vendor) {
 		return vendorRepository.save(vendor);
 	}
+	
 }

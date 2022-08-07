@@ -20,6 +20,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+* @Author: Shrikrishna Prabhumirashi
+* @Description:
+* ProductItem entity / model class
+**/
 
 @Builder
 @Data
@@ -74,23 +79,5 @@ public class ProductItem implements Serializable {
 
     @Column(name = "modifiedDate", columnDefinition = "DATE", nullable = true)
     private LocalDate modifiedDate;
-
-	/*
-	 * @Override public String toString() { StringBuilder builder = new
-	 * StringBuilder(); builder.append("ProductItem [id=").append(id)
-	 * .append(", name=").append(name) .append(", title=").append(title)
-	 * .append(", brand=").append(brand) .append(", color=").append(color)
-	 * .append(", basePrice=").append(basePrice)
-	 * .append(", vendorName=").append(vendorName)
-	 * .append(", mfgDate=").append(mfgDate)
-	 * .append(", expiryDate=").append(expiryDate)
-	 * .append(", createdBy=").append(createdBy)
-	 * .append(", createdDate=").append(createdDate)
-	 * .append(", modifiedBy=").append(modifiedBy)
-	 * .append(", modifiedDate=").append(modifiedDate) .append("]"); return
-	 * builder.toString(); }
-	 */
-
-
-
+    
 }

@@ -16,10 +16,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inoptra.assessment.shoppingcart.product.exceptions.ProductItemNotFoundException;
+import com.inoptra.assessment.shoppingcart.product.exceptions.VendorNotFoundException;
 import com.inoptra.assessment.shoppingcart.product.models.entities.ProductItem;
 import com.inoptra.assessment.shoppingcart.product.models.entities.Vendor;
 import com.inoptra.assessment.shoppingcart.product.services.VendorService;
+
+/**
+* @Author: Shrikrishna Prabhumirashi
+* @Description:
+* ProductController provides different REST API Endpoints for Vendor
+**/
+
 
 @RestController
 @RequestMapping(value = "/vendors")
@@ -29,10 +36,12 @@ public class VendorController {
 	@Autowired
 	private VendorService vendorService;
 	
+	
 	@GetMapping(value = {"/", ""})
 	public ResponseEntity<List<Vendor>> getAllVendors(){
 		return new ResponseEntity<>(vendorService.getAllVendors(), HttpStatus.FOUND);
 	}
+	
 	
 	@GetMapping(value = {"/{id}", "/{id}/"})
 	public ResponseEntity<Vendor> getVendor(@PathVariable(value = "id", required = true) Long vid){
@@ -47,8 +56,8 @@ public class VendorController {
 		
 		//vendorOpt.get().getProductItemsForSale().forEach(x -> logger.info( x.toString()));
 		return new ResponseEntity<> (vendorOpt.get(), HttpStatus.FOUND);
-		
 	}
+	
 	
 	@GetMapping(value = { "/{id}/products", "/{id}/products/"})
 	public ResponseEntity<List<ProductItem>> getProductItemsFromVendor(@PathVariable(value = "id", required = true) Long vid){
@@ -57,12 +66,13 @@ public class VendorController {
 		
 		
 		if(!vendorOpt.isPresent()) 
-				throw new ProductItemNotFoundException();
+				throw new VendorNotFoundException();
 				
 		//vendorOpt.get().getProductItemsForSale().forEach(x -> logger.info( x.toString()));
 		return new ResponseEntity<> (vendorOpt.get().getAvailableProductItems(), HttpStatus.FOUND);
 		
 	}
+	
 	
 	@PutMapping(value = {"/{id}", "/{id}/"})
 	public ResponseEntity<Vendor> update(@PathVariable(value = "id", required = true) Long vid, @RequestBody Vendor vendor) {
@@ -74,6 +84,7 @@ public class VendorController {
 		
 		return new ResponseEntity<> ( vendorService.saveOrUpdate(vendor), HttpStatus.ACCEPTED);
 	}
+	
 	
 	@PostMapping(value = { "/add", "/add/"})
 	public ResponseEntity<Vendor> save(@RequestBody Vendor vendor) {

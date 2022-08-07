@@ -2,8 +2,14 @@ package com.inoptra.assessment.shoppingcart.product.config;
 
 import org.springframework.context.annotation.Configuration;
 
+/**
+* @Author: Shrikrishna Prabhumirashi
+* @Description:
+* ShoppingCartConfig - Configuration for ShoppingCart micro-service
+**/
+
 @Configuration
-public class ProductConfig {
+public class ShoppingCartConfig {
 //    @Bean
 //    public View jsonTemplate() {
 //        MappingJackson2JsonView view = new MappingJackson2JsonView();

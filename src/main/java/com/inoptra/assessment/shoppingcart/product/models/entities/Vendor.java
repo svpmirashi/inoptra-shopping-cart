@@ -20,6 +20,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+* @Author: Shrikrishna Prabhumirashi
+* @Description:
+* Vendor entity / model class
+**/
+
 @Builder
 @Data
 @AllArgsConstructor
@@ -58,4 +64,5 @@ public class Vendor implements Serializable {
 
     @Column(name = "modifiedDate", columnDefinition = "DATE", nullable = true)
     private LocalDate modifiedDate;
+    
 }

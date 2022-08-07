@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 import com.inoptra.assessment.shoppingcart.product.models.entities.ProductItem;
 import com.inoptra.assessment.shoppingcart.product.repositories.ProductRepository;
 
+/**
+* @Author: Shrikrishna Prabhumirashi
+* @Description:
+* ProductService - Service layer for ProductItem object
+**/
+
 @Service
 public class ProductService {
     
@@ -19,12 +25,15 @@ public class ProductService {
     
     private static final Logger logger = Logger.getLogger(ProductService.class.getName());
     
+    
     public List<ProductItem> findAll() {
         if(logger.isLoggable(Level.ALL)) {
             logger.fine("ProductService::findAll ==> Searching for all product items");
         }
         return productRepository.findAll();
     }
+    
+    
     public List<ProductItem> findByName(String name){
         if(logger.isLoggable(Level.ALL)) {
             logger.info("ProductService::findByName ==> Searching for name = " + name);
@@ -32,12 +41,14 @@ public class ProductService {
         return productRepository.findByName(name);
     }
     
+    
     public List<ProductItem> findByKeyword(String keyword){
         if(logger.isLoggable(Level.ALL)) {
             logger.info("ProductService::findByKeyword ==> Searching for keyword = " + keyword);
         }
         return productRepository.findByKeyword(keyword);
     }
+    
 
     public List<ProductItem> findByTitle(String title){
         if(logger.isLoggable(Level.ALL)) {
@@ -46,6 +57,7 @@ public class ProductService {
         return productRepository.findByTitle(title);
     }
 
+    
     public ProductItem saveOrUpdate(ProductItem productItem){
         if(logger.isLoggable(Level.ALL)) {
             logger.info("ProductService::saveOrUpdate ==> productItem = " + productItem.toString());
@@ -53,6 +65,7 @@ public class ProductService {
         return productRepository.save(productItem);
     }
 
+    
     public void deleteById(Long id) {
         if(logger.isLoggable(Level.FINE)) {
             logger.fine("ProductService::deleteById ==> id = " + id);
@@ -60,10 +73,12 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    
     public Optional<ProductItem> findById(Long id) {
         if(logger.isLoggable(Level.FINE)) {
             logger.fine("ProductService::findById ==> id = " + id);
         }
         return productRepository.findById(id);
     }
+    
 }
