@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.inoptra.assessment.shoppingcart.product.models.ProductItem;
+import com.inoptra.assessment.shoppingcart.product.models.entities.ProductItem;
 import com.inoptra.assessment.shoppingcart.product.repositories.ProductRepository;
 
 @Service
@@ -17,11 +17,8 @@ public class ProductService {
 	@Autowired
     private ProductRepository productRepository;
     
-//    public ProductService(@Autowired ProductRepository productRepository) {
-//    	this.productRepository = productRepository;
-//    }
-    
     private static final Logger logger = Logger.getLogger(ProductService.class.getName());
+    
     public List<ProductItem> findAll() {
         if(logger.isLoggable(Level.ALL)) {
             logger.fine("ProductService::findAll ==> Searching for all product items");
@@ -33,6 +30,13 @@ public class ProductService {
             logger.info("ProductService::findByName ==> Searching for name = " + name);
         }
         return productRepository.findByName(name);
+    }
+    
+    public List<ProductItem> findByKeyword(String keyword){
+        if(logger.isLoggable(Level.ALL)) {
+            logger.info("ProductService::findByKeyword ==> Searching for keyword = " + keyword);
+        }
+        return productRepository.findByKeyword(keyword);
     }
 
     public List<ProductItem> findByTitle(String title){

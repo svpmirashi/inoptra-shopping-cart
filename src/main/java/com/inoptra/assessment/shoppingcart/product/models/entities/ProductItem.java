@@ -1,8 +1,9 @@
-package com.inoptra.assessment.shoppingcart.product.models;
+package com.inoptra.assessment.shoppingcart.product.models.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,12 +13,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,7 +32,7 @@ public class ProductItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "product_item_id")
     private long pid;
 
@@ -47,7 +51,9 @@ public class ProductItem implements Serializable {
     @Column(name = "basePrice")
     private double basePrice;
 
-    @ManyToOne
+    //@JsonManagedReference
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "vendor_id", nullable = false)
     private Vendor vendor;
 

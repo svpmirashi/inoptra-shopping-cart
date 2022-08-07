@@ -12,7 +12,8 @@ import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.inoptra.assessment.shoppingcart.product.models.ProductItem;
+import com.inoptra.assessment.shoppingcart.product.models.entities.ProductItem;
+import com.inoptra.assessment.shoppingcart.product.models.entities.Vendor;
 import com.inoptra.assessment.shoppingcart.product.repositories.ProductRepository;
 
 @SpringBootTest
@@ -37,8 +38,9 @@ class ShoppingCartMicroserviceApplicationTests {
         LocalDate expiryDate = LocalDate.parse("2025-01-05");
         LocalDate createdDate = LocalDate.parse("2022-06-08");
         LocalDate modifiedDate = LocalDate.parse("2022-06-08");
-
-        ProductItem productItem = new ProductItem(1L, "iPhone 13 Pro Max", "iPhone 13 Pro Max", "iPhone", "Black", 139900, "Vendor 1", mfgDate, expiryDate, "testUser1", createdDate, "testUser1", modifiedDate);
+        
+        Vendor vendor = new Vendor();
+        ProductItem productItem = new ProductItem(1L, "iPhone 13 Pro Max", "iPhone 13 Pro Max", "iPhone", "Black", 139900, vendor, mfgDate, expiryDate, "testUser1", createdDate, "testUser1", modifiedDate);
         productRepository.save(productItem);
         //List<ProductItem> productItems = productRepository.findByTitle("iPhone 13 Pro Max");
         List<ProductItem> productItems = productRepository.findAll();

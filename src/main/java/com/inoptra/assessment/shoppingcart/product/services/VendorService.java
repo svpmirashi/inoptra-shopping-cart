@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.inoptra.assessment.shoppingcart.product.models.Vendor;
+import com.inoptra.assessment.shoppingcart.product.models.entities.Vendor;
 import com.inoptra.assessment.shoppingcart.product.repositories.VendorRepository;
 
 @Service
@@ -19,7 +19,7 @@ public class VendorService {
 		return vendorRepository.findAll();
 	}
 	
-	public Optional<Vendor> getVendor(int vid){
+	public Optional<Vendor> getVendor(Long vid){
 		return vendorRepository.findById(vid);
 	}
 	

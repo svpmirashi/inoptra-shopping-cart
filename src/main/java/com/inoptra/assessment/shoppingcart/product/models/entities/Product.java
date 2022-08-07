@@ -1,4 +1,4 @@
-package com.inoptra.assessment.shoppingcart.product.models;
+package com.inoptra.assessment.shoppingcart.product.models.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;

@@ -3,9 +3,9 @@ package com.inoptra.assessment.shoppingcart.product.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.inoptra.assessment.shoppingcart.product.models.Vendor;
+import com.inoptra.assessment.shoppingcart.product.models.entities.Vendor;
 
 @Repository
-public interface VendorRepository extends JpaRepository<Vendor, Integer>{
+public interface VendorRepository extends JpaRepository<Vendor, Long>{
 
 }
