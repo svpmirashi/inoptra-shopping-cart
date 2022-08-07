@@ -6,6 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class InvalidProductItemIdException extends RuntimeException implements Serializable{
+public class InvalidVendorIdException extends RuntimeException implements Serializable{
 	private static final long serialVersionUID = 1L;
 }

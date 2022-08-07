@@ -45,7 +45,7 @@ public class Vendor implements Serializable {
     //@JsonIdentityInfo(generator = null)
     @JsonManagedReference
     @OneToMany(mappedBy = "vendor", fetch = FetchType.LAZY)
-	private List<ProductItem> productItemsForSale;
+	private List<ProductItem> availableProductItems;
 
     @Column(name = "createdBy", nullable = true)
     private String createdBy;

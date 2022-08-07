@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.inoptra.assessment.shoppingcart.product.exceptions.ProductItemNotFoundException;
 import com.inoptra.assessment.shoppingcart.product.models.entities.ProductItem;
 import com.inoptra.assessment.shoppingcart.product.models.entities.Vendor;
 import com.inoptra.assessment.shoppingcart.product.services.VendorService;
@@ -27,46 +30,53 @@ public class VendorController {
 	private VendorService vendorService;
 	
 	@GetMapping(value = {"/", ""})
-	public List<Vendor> getAllVendors(){
-		return vendorService.getAllVendors();
+	public ResponseEntity<List<Vendor>> getAllVendors(){
+		return new ResponseEntity<>(vendorService.getAllVendors(), HttpStatus.FOUND);
 	}
 	
 	@GetMapping(value = {"/{id}", "/{id}/"})
-	public Vendor getVendor(@PathVariable(value = "id", required = true) Long vid){
+	public ResponseEntity<Vendor> getVendor(@PathVariable(value = "id", required = true) Long vid){
 		Optional<Vendor> vendorOpt = vendorService
 					.getVendor(vid);
 		
 		
-		if(!vendorOpt.isPresent()) return null;
+		if(!vendorOpt.isPresent()) 
+			return ResponseEntity
+						.notFound()
+						.build();
+		
 		//vendorOpt.get().getProductItemsForSale().forEach(x -> logger.info( x.toString()));
-		return vendorOpt.get();
+		return new ResponseEntity<> (vendorOpt.get(), HttpStatus.FOUND);
 		
 	}
 	
 	@GetMapping(value = { "/{id}/products", "/{id}/products/"})
-	public List<ProductItem> getProductItemsFromVendor(@PathVariable(value = "id", required = true) Long vid){
+	public ResponseEntity<List<ProductItem>> getProductItemsFromVendor(@PathVariable(value = "id", required = true) Long vid){
 		Optional<Vendor> vendorOpt = vendorService
-					.getVendor(vid);
+																	.getVendor(vid);
 		
 		
-		if(!vendorOpt.isPresent()) return null;
+		if(!vendorOpt.isPresent()) 
+				throw new ProductItemNotFoundException();
+				
 		//vendorOpt.get().getProductItemsForSale().forEach(x -> logger.info( x.toString()));
-		return vendorOpt.get().getProductItemsForSale();
+		return new ResponseEntity<> (vendorOpt.get().getAvailableProductItems(), HttpStatus.FOUND);
 		
 	}
 	
 	@PutMapping(value = {"/{id}", "/{id}/"})
-	public Vendor update(@PathVariable(value = "id", required = true) Long vid, @RequestBody Vendor vendor) {
+	public ResponseEntity<Vendor> update(@PathVariable(value = "id", required = true) Long vid, @RequestBody Vendor vendor) {
 		Optional<Vendor> vendorOpt = vendorService.getVendor(vid);
 		
-		if(vendorOpt.isPresent()) { 
-			return vendorService.saveOrUpdate(vendor);
+		if(!vendorOpt.isPresent()) { 
+			return new ResponseEntity<> ( vendorService.saveOrUpdate(vendor), HttpStatus.CREATED);
 		}
-		return vendorService.saveOrUpdate(vendor);
+		
+		return new ResponseEntity<> ( vendorService.saveOrUpdate(vendor), HttpStatus.ACCEPTED);
 	}
 	
 	@PostMapping(value = { "/add", "/add/"})
-	public Vendor save(@RequestBody Vendor vendor) {
-		return vendorService.saveOrUpdate(vendor);
+	public ResponseEntity<Vendor> save(@RequestBody Vendor vendor) {
+		return new ResponseEntity<> ( vendorService.saveOrUpdate(vendor), HttpStatus.CREATED);
 	}
 }
