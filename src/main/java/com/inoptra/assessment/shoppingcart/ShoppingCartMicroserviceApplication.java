@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableAutoConfiguration
-@EnableJpaRepositories(basePackages = "com.inoptra.assessment.shoppingcart.product.repositories")
+@EnableJpaRepositories(basePackages = "com.inoptra.assessment.shoppingcart.repositories")
 @SpringBootApplication
 public class ShoppingCartMicroserviceApplication {
 
