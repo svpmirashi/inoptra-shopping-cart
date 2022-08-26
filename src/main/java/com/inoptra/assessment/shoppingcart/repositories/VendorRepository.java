@@ -12,6 +12,6 @@ import com.inoptra.assessment.shoppingcart.models.entities.Vendor;
 **/
 
 @Repository
-public interface VendorRepository extends JpaRepository<Vendor, Long>{
+public interface VendorRepository extends JpaRepository<Vendor, Long>, AbstractRepository{
 
 }

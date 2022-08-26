@@ -14,17 +14,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.inoptra.assessment.shoppingcart.models.Constants;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import lombok.Data;
-
-@Data
+@Builder
+@Getter 
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "shopping_cart")
 public class ShoppingCart implements Serializable {
@@ -36,20 +43,21 @@ public class ShoppingCart implements Serializable {
 	@Column(name = "shopping_cart_id")
 	private Long id;
 	
-	//	@JsonManagedReference
-	//@JoinColumn(name = "shopping_cart_id", referencedColumnName = "shopping_cart_id")
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinTable( name = "SHOPPING_CART_PRODUCT_ITEM",
-							joinColumns = { @JoinColumn (name = "shopping_cart_id", referencedColumnName = "shopping_cart_id")},
-							inverseJoinColumns = { @JoinColumn(name = "product_item_id", referencedColumnName = "product_item_id") }
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(  
+							name = "SHOPPING_CART_PRODUCT_ITEM",
+							indexes = {},
+							joinColumns = { @JoinColumn (name = "shopping_cart_fk", referencedColumnName = "shopping_cart_id", unique = false, nullable = true, insertable = true, updatable = true)},
+							inverseJoinColumns = { @JoinColumn(name = "product_item_fk", referencedColumnName = "product_item_id") },
+							uniqueConstraints = {@UniqueConstraint(columnNames = {"shopping_cart_fk", "product_item_fk"})}
 						)
 	private List<ProductItem> productItems;
 	
 	@Embedded
 	@AttributeOverrides( {
-				@AttributeOverride(name = "grossTotalAmount", column = @Column(name = "gross_total_amount")),
-				@AttributeOverride(name = "totalDiscountsAmount", column = @Column(name = "total_discount_amount")),
-				@AttributeOverride(name = "netPayableAmount", column = @Column(name = "net_payable_amount"))
+				@AttributeOverride(name = "grossTotalAmount", column = @Column(name = "gross_total_amount", columnDefinition = "double default 0.0")),
+				@AttributeOverride(name = "totalDiscountsAmount", column = @Column(name = "total_discount_amount", columnDefinition = "double default 0.0")),
+				@AttributeOverride(name = "netPayableAmount", column = @Column(name = "net_payable_amount", columnDefinition = "double default 0.0"))
 	})
 	private CartTotal cartTotal;
 
@@ -57,6 +65,7 @@ public class ShoppingCart implements Serializable {
     private String createdBy;
 
     @Column(name = "createdDate", columnDefinition = "DATE", nullable = true)
+    @Temporal(TemporalType.DATE)
     private LocalDate createdDate;
 
     @Column(name = "modifiedBy", nullable = true)
@@ -64,5 +73,5 @@ public class ShoppingCart implements Serializable {
 
     @Column(name = "modifiedDate", columnDefinition = "DATE", nullable = true)
     private LocalDate modifiedDate;
-    
+
 }

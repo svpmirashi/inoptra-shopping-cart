@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inoptra.assessment.shoppingcart.models.entities.Vendor;
-import com.inoptra.assessment.shoppingcart.repositories.ShoppingCartRepository;
 import com.inoptra.assessment.shoppingcart.repositories.VendorRepository;
 
 /**
@@ -27,7 +26,7 @@ public class VendorService {
 	
 	public List<Vendor> getAllVendors(){
 		
-		logger.fine("VendorService::getAllVendors ==> Searching for all Vendors");
+		logger.info("VendorService::getAllVendors ==> Searching for all Vendors");
 		
 		return vendorRepository.findAll();
 	}
@@ -35,7 +34,7 @@ public class VendorService {
 	
 	public Optional<Vendor> getVendor(Long vid){
 		
-		logger.fine("VendorService::getVendor ==> Searching for a Vendor with id = " + vid);
+		logger.info("VendorService::getVendor ==> Searching for a Vendor with id = " + vid);
 		
 		return vendorRepository.findById(vid);
 	}
@@ -43,14 +42,14 @@ public class VendorService {
 	
 	public Vendor saveOrUpdate(Vendor vendor) {
 		
-		logger.fine("VendorService::saveOrUpdate ==> Vendor = " + vendor.toString());
+		logger.info("VendorService::saveOrUpdate ==> Vendor = " + vendor.toString());
 		
 		return vendorRepository.save(vendor);
 	}
 	
     public void deleteById(Long id) {
 
-        logger.fine("VendorService::deleteById ==> id = " + id);
+        logger.info("VendorService::deleteById ==> id = " + id);
 
         vendorRepository.deleteById(id);
     }

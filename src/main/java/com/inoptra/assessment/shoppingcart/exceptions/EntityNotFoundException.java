@@ -14,7 +14,7 @@ public class EntityNotFoundException extends RuntimeException implements Seriali
 	
 	
 	public EntityNotFoundException() {
-		super("Vendor Not Found");
+		super("Entity Not Found");
 	}
 	
 	

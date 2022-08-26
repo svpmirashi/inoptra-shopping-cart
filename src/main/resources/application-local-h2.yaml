@@ -20,6 +20,8 @@ spring.h2.console:
   enabled: true
   path: /h2-console
   settings:
-    trace: true
+ #   trace: true
     web-allow-others: false
 
+logging:
+  pattern.console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"

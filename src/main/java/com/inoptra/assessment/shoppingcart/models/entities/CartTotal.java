@@ -4,9 +4,18 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+@Builder
+@Getter 
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Embeddable
 public class CartTotal implements Serializable {
 
@@ -15,4 +24,5 @@ public class CartTotal implements Serializable {
 	private double totalDiscountAmount;
 	
 	private double netPayableAmount;
+	
 }

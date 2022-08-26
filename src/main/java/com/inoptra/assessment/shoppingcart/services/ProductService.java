@@ -28,7 +28,7 @@ public class ProductService {
     
     public List<ProductItem> findAll() {
 
-        logger.fine("ProductService::findAll ==> Searching for all product items");
+        logger.info("ProductService::findAll ==> Searching for all product items");
 
         return productRepository.findAll();
     }
@@ -37,7 +37,7 @@ public class ProductService {
     
     public Optional<ProductItem> findById(Long id) {
         
-        logger.fine("ProductService::findById ==> id = " + id);
+        logger.info("ProductService::findById ==> id = " + id);
         
         return productRepository.findById(id);
     }
@@ -61,7 +61,7 @@ public class ProductService {
 
 //    public List<ProductItem> findByTitle(String title){
 //        if(logger.isLoggable(Level.ALL)) {
-//            logger.fine("ProductService::findByTitle ==> Searching for title = " + title);
+//            logger.info("ProductService::findByTitle ==> Searching for title = " + title);
 //        }
 //        return productRepository.findByTitle(title);
 //    }
@@ -77,7 +77,7 @@ public class ProductService {
     
     public void deleteById(Long id) {
 
-    	logger.fine("ProductService::deleteById ==> id = " + id);
+    	logger.info("ProductService::deleteById ==> id = " + id);
         
     	productRepository.deleteById(id);
     }

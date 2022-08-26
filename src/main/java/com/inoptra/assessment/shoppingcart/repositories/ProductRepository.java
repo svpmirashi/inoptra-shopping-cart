@@ -16,7 +16,7 @@ import com.inoptra.assessment.shoppingcart.models.entities.ProductItem;
 **/
 
 @Repository
-public interface ProductRepository extends JpaRepository<ProductItem, Long> {
+public interface ProductRepository extends JpaRepository<ProductItem, Long>, AbstractRepository {
     //List<ProductItem> findByTitle(String title);
     List<ProductItem> findByName(String name);
     

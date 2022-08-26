@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -17,15 +16,18 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.inoptra.assessment.shoppingcart.models.Constants;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
+@Builder
+@Getter 
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "product_meta")
 public class ProductMeta implements Serializable {
@@ -75,4 +77,5 @@ public class ProductMeta implements Serializable {
 
     @Column(name = "modifiedDate", columnDefinition = "DATE", nullable = true)
     private LocalDate modifiedDate;
+    
 }

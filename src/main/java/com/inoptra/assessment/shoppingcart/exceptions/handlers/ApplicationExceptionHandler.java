@@ -77,15 +77,15 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
 	}
 	
 	
-	@ExceptionHandler(value = StackOverflowError.class)
-	protected ResponseEntity<Object> handleStackOverflowError(Exception ex,  WebRequest request){
-		
-		String message = String.format("Wrong JPA mapping [Request: %s]", request.getContextPath());
-
-		logger.info(message);
-
-		return buildResponseEntity(HttpStatus.BAD_GATEWAY, message, ex);
-	}
+//	@ExceptionHandler(value = StackOverflowError.class)
+//	protected ResponseEntity<Object> handleStackOverflowError(Exception ex,  WebRequest request){
+//		
+//		String message = String.format("Wrong JPA mapping [Request: %s]", request.getContextPath());
+//
+//		logger.info(message);
+//
+//		return buildResponseEntity(HttpStatus.BAD_GATEWAY, message, ex);
+//	}
 	
 	
 	
@@ -100,14 +100,14 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
 	}
 	
 	
-	@ExceptionHandler(value = Throwable.class)
-	protected ResponseEntity<Object> handleGeneralException(Throwable ex,  WebRequest request){
-		
-		String message = String.format("Something went wrong [Request: %s]", request.getContextPath());
-		
-		logger.info(message);
-		
-		return buildResponseEntity(HttpStatus.BAD_REQUEST, message, ex);
-	}
+//	@ExceptionHandler(value = Throwable.class)
+//	protected ResponseEntity<Object> handleGeneralException(Throwable ex,  WebRequest request){
+//		
+//		String message = String.format("Something went wrong [Request: %s]", request.getContextPath());
+//		
+//		logger.info(message);
+//		
+//		return buildResponseEntity(HttpStatus.BAD_REQUEST, message, ex);
+//	}
 	
 }
