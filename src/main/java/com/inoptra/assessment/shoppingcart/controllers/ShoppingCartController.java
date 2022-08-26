@@ -35,13 +35,13 @@ public class ShoppingCartController {
 	@Autowired
 	private ShoppingCartService shoppingCartService;
 	
-	@GetMapping(value = {"/", ""})
+	@GetMapping(value = {"/"})
 	public ResponseEntity<List<ShoppingCart>> getAllShoppingCarts(){
 		return new ResponseEntity<>(shoppingCartService.findAll(), HttpStatus.FOUND);
 	}
 	
 	
-	@GetMapping(value = {"/{id}", "/{id}/"})
+	@GetMapping(value = {"/{id}"})
 	public ResponseEntity<ShoppingCart> getShoppingCart(@PathVariable(value = "id", required = true) Long sid){
 		ShoppingCart shoppingCart = shoppingCartService
 														.findById(sid)
@@ -51,7 +51,7 @@ public class ShoppingCartController {
 	}
 	
 	
-	@PutMapping(value = {"/{id}", "/{id}/"})
+	@PutMapping(value = {"/{id}"})
 	public ResponseEntity<ShoppingCart> update(@PathVariable(value = "id", required = true) Long sid, @RequestBody ShoppingCart shoppingCart) {
 		Optional<ShoppingCart> shoppingCartOpt = shoppingCartService.findById(sid);
 		
@@ -68,7 +68,7 @@ public class ShoppingCartController {
 		return new ResponseEntity<> ( shoppingCartService.addToCart(shoppingCartId, productIds), HttpStatus.CREATED);
 	}
 	
-	@PostMapping(value={"/add-to-cart", "/add"})
+	@PostMapping(value={"/", "/add"})
 	public ResponseEntity<ShoppingCart> addToNewCart(@RequestBody ShoppingCart shoppingCart) {
 		return new ResponseEntity<> ( shoppingCartService.saveOrUpdate(shoppingCart), HttpStatus.CREATED);
 	}
