@@ -3,7 +3,6 @@ package com.inoptra.assessment.shoppingcart.controllers;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +39,7 @@ public class ProductController {
     private ProductService productService;
 
    
-    @GetMapping(value = { "/", "" })
+    @GetMapping(value = { "/"})
     public ResponseEntity<List<ProductItem>> getProductItemsAllOrByKeyword(
                                         @RequestParam(name = "keyword", required = false) String keyword
                                     ) {
@@ -54,13 +53,12 @@ public class ProductController {
         if(Objects.isNull(result) || result.isEmpty()) 
         	throw new ProductItemNotFoundException();
         
-        //logger.info(result.toString());
         return new ResponseEntity<> (result, HttpStatus.FOUND);
 
     }
     
     
-    @GetMapping(path = {"/{id}", "/{id}/", "/product/{id}", "/product/{id}/"})
+    @GetMapping(path = {"/{id}"})
     public ResponseEntity<ProductItem> getProductItemsById(@PathVariable(name = "id", required = true) Long id){
         
     	if(Objects.isNull(id) || id <= 0) throw new InvalidProductItemIdException();
@@ -73,22 +71,16 @@ public class ProductController {
     }
     
     
-    @PostMapping(path = { "/add", "/add/" })
+    @PostMapping(path = { "/add" })
     public ResponseEntity<ProductItem> addProductItem(@RequestBody ProductItem productItem){
-    	
-    	//if(logger.isDebugEnabled())
-    	//logger.info(productItem.toString());
-    	
+
     	return  new ResponseEntity<>(productService.saveOrUpdate(productItem), HttpStatus.CREATED);
     }
     
     
-    @PutMapping(path =  {"/{id}", "/{id}/", "/product/{id}", "/product/{id}/"})
+    @PutMapping(path =  {"/{id}"})
     public ResponseEntity<ProductItem> updateProductItem(@RequestBody ProductItem productItem){
-    	
-    	//if(logger.isDebugEnabled())
-    	//logger.info(productItem.toString());
-    	
+
     	return  new ResponseEntity<>(productService.saveOrUpdate(productItem), HttpStatus.NO_CONTENT);
     }
     

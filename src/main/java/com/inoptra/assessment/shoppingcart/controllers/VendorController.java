@@ -43,7 +43,7 @@ public class VendorController {
 	}
 	
 	
-	@GetMapping(value = {"/{id}", "/{id}/"})
+	@GetMapping(value = {"/{id}"})
 	public ResponseEntity<Vendor> getVendor(@PathVariable(value = "id", required = true) Long vid){
 		Vendor vendor = vendorService
 										.getVendor(vid)
@@ -54,7 +54,7 @@ public class VendorController {
 	}
 	
 	
-	@GetMapping(value = { "/{id}/products", "/{id}/products/"})
+	@GetMapping(value = { "/{id}/products"})
 	public ResponseEntity<List<ProductItem>> getProductItemsFromVendor(@PathVariable(value = "id", required = true) Long vid){
 		Vendor vendor = vendorService
 										.getVendor(vid)
@@ -66,7 +66,7 @@ public class VendorController {
 	}
 	
 	
-	@PutMapping(value = {"/{id}", "/{id}/"})
+	@PutMapping(value = {"/{id}"})
 	public ResponseEntity<Vendor> update(@PathVariable(value = "id", required = true) Long vid, @RequestBody Vendor vendor) {
 		Optional<Vendor> vendorOpt = vendorService.getVendor(vid);
 		
@@ -78,7 +78,7 @@ public class VendorController {
 	}
 	
 	
-	@PostMapping(value = { "/add", "/add/"})
+	@PostMapping(value = { "/add"})
 	public ResponseEntity<Vendor> save(@RequestBody Vendor vendor) {
 		return new ResponseEntity<> ( vendorService.saveOrUpdate(vendor), HttpStatus.CREATED);
 	}

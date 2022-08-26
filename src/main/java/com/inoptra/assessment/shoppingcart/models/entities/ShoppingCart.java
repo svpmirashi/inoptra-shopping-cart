@@ -17,8 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 import lombok.AllArgsConstructor;
@@ -65,7 +63,6 @@ public class ShoppingCart implements Serializable {
     private String createdBy;
 
     @Column(name = "createdDate", columnDefinition = "DATE", nullable = true)
-    @Temporal(TemporalType.DATE)
     private LocalDate createdDate;
 
     @Column(name = "modifiedBy", nullable = true)
